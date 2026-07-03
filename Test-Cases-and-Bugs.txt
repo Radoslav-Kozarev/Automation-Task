@@ -1,0 +1,186 @@
+Test cases covered by automation:
+
+TC01: Login with invalid credentials (Negative)
+Steps:
+1.	Open the Swag Labs login page.
+2.	Enter an invalid username and/or password.
+3.	Click Login.
+Expected Result: An error message is displayed, and the user remains on the Login page.
+
+TC02: Login with valid credentials
+Steps:
+1.	Open the Swag Labs login page.
+2.	Enter a valid username.
+3.	Enter the valid password.
+4.	Click Login.
+Expected Result:
+User is successfully logged in and redirected to the Products page.
+
+TC03: Add product to cart
+Steps:
+1.	Log in with valid credentials.
+2.	Click Add to cart for any product.
+Expected Result:
+The product is added to the cart, the button changes to Remove, and the cart badge is updated.
+
+TC04: Verify cart contents
+Steps:
+1.	Add a product to the cart.
+2.	Open the cart.
+Expected Result:
+The selected product is displayed in the cart with correct name, description, price, and quantity.
+
+TC05: Complete checkout information
+Steps:
+1.	Open the cart with at least one product added.
+2.	Click Checkout.
+3.	Enter first name, last name, and ZIP/postal code.
+4.	Click Continue.
+Expected Result:
+User is redirected to the Checkout Overview page.
+
+TC06: Verify checkout overview
+Steps:
+1.	Complete checkout information.
+2.	Review the Checkout Overview page.
+Expected Result:
+The product details, payment information, shipping information, item total, tax, and total price are displayed
+correctly.
+
+TC07: Complete order successfully
+Steps:
+1.	Open the Checkout Overview page.
+2.	Click Finish.
+Expected Result:
+User is redirected to the Checkout Complete page and a success message is displayed.
+
+TC08: Return to products after order completion
+Steps:
+1.	Complete an order successfully.
+2.	Click Back Home.
+Expected Result:
+User is redirected back to the Products page.
+
+TC09: Continue checkout with required fields left empty (negative)
+Steps:
+1.	Add a product to the cart.
+2.	Open Checkout.
+3.	Leave one or more required fields empty.
+4.	Click Continue.
+Expected Result: Validation message(s) are displayed and the user cannot proceed to the Checkout Overview page.
+
+TC10: Attempt to access Checkout with an empty cart (edge case)
+Steps:
+1.	Log in with valid credentials.
+2.	Open the cart.
+3.	Click Checkout.
+4.	Enter first name, last name, and ZIP/postal code.
+5.	Click Continue.
+Expected Result:
+The user cannot complete checkout with an empty cart. The application either redirects back to the Products/Cart page
+or displays an appropriate message.
+
+
+
+Test cases not covered by automation:
+
+TC11: Verify product sorting
+Steps:
+1.	Log in with valid credentials.
+2.	Open the Products page.
+3.	Change the sorting option, e.g. Name (Z to A) or Price (low to high).
+4.	Review the product order.
+Expected Result:
+Products are displayed in the selected sorting order.
+
+TC12: Remove a product from the cart
+Steps:
+1.	Log in with valid credentials.
+2.	Add a product to the cart.
+3.	Open the cart.
+4.	Click Remove for the product.
+Expected Result:
+The selected product is removed from the cart and the cart badge is updated accordingly.
+
+TC13: Continue shopping from the cart
+Steps:
+1.	Log in with valid credentials.
+2.	Add a product to the cart.
+3.	Open the cart.
+4.	Click Continue Shopping.
+Expected Result:
+The user is redirected back to the Products page and the cart contents are preserved.
+
+TC14: Cancel checkout
+Steps:
+1.	Add a product to the cart.
+2.	Open the cart.
+3.	Click Checkout.
+4.	Click Cancel.
+Expected Result:
+The user is returned to the Cart page, and the product remains in the cart.
+
+
+
+Bugs Found:
+
+BR01:
+Title: Checkout can be completed with an empty cart
+Description:
+The application allows users to proceed through the checkout flow and complete an order even when the shopping cart
+is empty.
+Steps to Reproduce:
+1.	Log in with valid credentials.
+2.	Ensure the shopping cart is empty.
+3.	Navigate to Checkout
+4.	Complete the checkout process.
+5.	Click Continue
+Expected Result:
+The user should not be able to proceed with checkout when the cart is empty. An appropriate validation message
+should be displayed, or the user should be redirected back to the cart/products page.
+Actual Result:
+The checkout process can be completed successfully even though the cart is empty.
+
+BR02:
+Title: Product image differs between Product List and Product Details
+Description:
+The product image аnd prize displayed in the Product List does not match the image and prize shown on the
+corresponding Product Details page.
+Steps to Reproduce:
+1.	Log in with valid credentials.
+2.	Open the Products page.
+3.	Note the image displayed for a product (e.g. Sauce Labs Backpack).
+4.	Open the product details page.
+5.	Compare the product details.
+Expected Result:
+The same product details should be displayed consistently in both the Product List and the Product Details page.
+Actual Result:
+Different details are displayed for the same product in the Product List and the Product Details page.
+
+BR03:
+Title:Cart page fails to load after clicking the cart icon
+Description: Clicking the cart icon results in a blank page instead of displaying the shopping cart. The browser
+console shows a JavaScript error (TypeError: Cannot read properties of undefined (reading 'id')), preventing the
+page from rendering.
+Steps to Reproduce:
+1.	Log in with valid credentials.
+2.	Add a product to the cart.
+3.	Click the cart icon.
+Expected Result:
+The Cart page opens and displays the products added to the shopping cart.
+Actual Result:
+A blank page is displayed instead of the Cart page. The browser console reports a JavaScript error:
+TypeError: Cannot read properties of undefined (reading 'id').
+
+BR04:
+Title: About menu item leads to a 404 Page Not Found
+Description: Clicking the About option in the side navigation redirects the user to a 404 - Page Not Found page
+instead of the expected About page.
+Steps to Reproduce:
+1.	Log in with valid credentials.
+2.	Open the side navigation menu.
+3.	Click About.
+Expected Result:
+The user is redirected to the About page or another valid destination.
+Actual Result:
+The user is redirected to a 404 - Page Not Found page.
