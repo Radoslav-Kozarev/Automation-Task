@@ -9,16 +9,16 @@ UI automation project for the Swag Labs demo application using *Playwright*,
 - Playwright
 - Pytest
 
+- I chose Playwright with Python because Playwright is a modern automation 
+testing tool that provides fast, reliable, and stable browser automation. 
+I have some experience with this tech stack from previous projects. 
+
 ## Prerequisites
 
 Before running the tests, make sure the following are installed:
 
 - Python *3.9 or later*
 - Git
-
-Verify your Python version:
-
-python --version
 
 ---
 
@@ -54,14 +54,6 @@ Run all tests:
 Run tests with a visible browser:
 
 - pytest --headed
-
-Run a specific test file:
-
-- pytest tests/test_swag_labs_flow.py
-
-Run a specific test:
-
-- pytest -k test_login_with_valid_credentials
 
 ---
 
